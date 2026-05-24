@@ -182,3 +182,13 @@ export const BADGE_CONFIG: Record<string, { label: string; emoji: string; descri
   consistent: { label: 'Consistent', emoji: '🎯', description: '7 days of 100% completion' },
   early_bird: { label: 'Early Bird', emoji: '🌅', description: 'Completed habits before 7am' },
 }
+
+export type LeaderboardEntry = {
+  user_id: string
+  username: string
+  avatar_url: string | null
+  longest_streak: number
+  weekly_completions: number
+  total_completions: number
+  rank: number
+}
