@@ -10,6 +10,10 @@ const typeConfig = {
   habit_missed: { emoji: '💤', color: 'text-muted-foreground' },
   joined: { emoji: '👋', color: 'text-blue-400' },
   badge_earned: { emoji: '🏅', color: 'text-yellow-400' },
+  session_completed: { emoji: '⏱️', color: 'text-cyan-400' },
+  milestone_completed: { emoji: '🗺️', color: 'text-purple-400' },
+  goal_created: { emoji: '🎯', color: 'text-orange-400' },
+  goal_joined: { emoji: '🤝', color: 'text-blue-400' },
 }
 
 export default function FeedClient({ feed }: { feed: ActivityFeedItem[] }) {
