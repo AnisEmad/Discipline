@@ -24,7 +24,7 @@ export default async function RoadmapPage() {
 
   const { data: profiles } = await supabase
     .from('profiles')
-    .select('id, username, avatar_url')
+    .select('id, username, avatar_url, bio, created_at')
 
   return (
     <RoadmapClient
