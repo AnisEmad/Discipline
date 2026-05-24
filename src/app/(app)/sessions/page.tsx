@@ -31,7 +31,7 @@ export default async function SessionsPage() {
   // Stats per user
   const { data: stats } = await supabase
     .from('study_sessions')
-    .select('user_id, duration_minutes, profiles(username, avatar_url)')
+    .select('user_id, duration_minutes')
     .eq('status', 'completed')
 
   return (

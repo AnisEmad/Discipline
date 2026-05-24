@@ -12,7 +12,7 @@ type Props = {
   activeSession: StudySession | null
   history: StudySession[]
   allActive: StudySession[]
-  stats: { user_id: string; duration_minutes: number | null; profiles?: { username: string; avatar_url: string | null } | null }[]
+  stats: { user_id: string; duration_minutes: number | null }[]
   userId: string
 }
 
@@ -144,14 +144,13 @@ export default function SessionsClient({ activeSession: initialActive, history, 
 
   // Leaderboard by total hours
   const leaderboard = Object.values(
-    stats.reduce<Record<string, { username: string; avatar_url: string | null; total: number }>>((acc, s) => {
-      if (!s.profiles) return acc
-      const key = s.user_id
-      if (!acc[key]) acc[key] = { username: s.profiles.username, avatar_url: s.profiles.avatar_url, total: 0 }
-      acc[key].total += s.duration_minutes ?? 0
-      return acc
-    }, {})
-  ).sort((a, b) => b.total - a.total)
+  stats.reduce<Record<string, { username: string; avatar_url: string | null; total: number }>>((acc, s) => {
+    const key = s.user_id
+    if (!acc[key]) acc[key] = { username: key.slice(0, 8), avatar_url: null, total: 0 }
+    acc[key].total += s.duration_minutes ?? 0
+    return acc
+  }, {})
+).sort((a, b) => b.total - a.total)
 
   return (
     <div className="space-y-6 animate-fade-in">
